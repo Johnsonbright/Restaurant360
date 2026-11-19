@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420">
+  <rect width="640" height="420" fill="#14213A"/>
+  <circle cx="320" cy="210" r="152" fill="#FBF6EE"/>
+  <circle cx="320" cy="210" r="132" fill="none" stroke="#E7DCCB" stroke-width="3"/>
+  <path d="M259 162c19-26 57-32 84-10 29 24 34 63 13 93-19 27-63 35-88 12-29-26-31-67-9-95Z" fill="#C98253"/>
+  <path d="M278 168c19-16 46-17 63-4M272 194c22-12 48-11 71 1M280 221c17-9 37-8 54 1" fill="none" stroke="#F0D39C" stroke-linecap="round" stroke-width="7"/>
+  <path d="M223 259c25-25 56-28 79-5 6 19-4 35-35 42-31 6-55-9-44-37Z" fill="#D6B778"/>
+  <ellipse cx="399" cy="245" rx="31" ry="15" fill="#6F8B5C"/>
+  <ellipse cx="405" cy="218" rx="25" ry="12" fill="#82986A"/>
+  <circle cx="383" cy="158" r="8" fill="#D9A64E"/>
+  <text x="320" y="387" fill="#A9B4C7" font-family="sans-serif" font-size="15" text-anchor="middle" letter-spacing="3">SAMPLE ARTWORK</text>
+</svg>
