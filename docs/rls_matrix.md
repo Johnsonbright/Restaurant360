@@ -1,7 +1,7 @@
 # Row-level security matrix
 
 This matrix describes the direct table access granted by the policies in the
-migrations through `20261119090300_notifications_events.sql`. `R`, `I`, `U`
+migrations through `20261119120000_customer_order_items_insert.sql`. `R`, `I`, `U`
 and `D` mean read, insert, update and delete are allowed; `-` means denied.
 An allowed operation can still be limited to rows, columns, or values stated
 below. Role columns refer to an authenticated user with that one `profiles.role`.
@@ -18,7 +18,7 @@ Anonymous access is via the `anon` database role.
 | menu_item_history | - | - | - | R | - | - | - | R |
 | app_settings | - | - | R | R/I/U/D | - | - | - | R/I/U/D |
 | orders | - | R/I/U | R | R/I/U/D | - | - | - | R/I/U/D |
-| order_items | - | R | R | R/I/U/D | - | - | - | R/I/U/D |
+| order_items | - | R/I | R | R/I/U/D | - | - | - | R/I/U/D |
 | order_status_log | - | R | R | R | - | - | - | R |
 | kitchen_records | - | - | R | R/I/U/D | - | - | - | R/I/U/D |
 | suppliers | - | - | - | R/I/U/D | - | - | - | R/I/U/D |
@@ -54,9 +54,10 @@ Anonymous access is via the `anon` database role.
 - Customers may read their own orders, order items, status history, payments,
   deliveries, reservations, feedback, complaints, enquiries and public
   enquiry responses. Their order insert policy requires a new order with
-  total zero; their only order update is changing their own `New` order to
-  `Cancelled`. They can insert requested reservations, own feedback,
-  complaints initially `Open`, and new enquiries.
+  total zero; they may insert order items only into their own `New` orders;
+  their only order update is changing their own `New` order to `Cancelled`.
+  They can insert requested reservations, own feedback, complaints initially
+  `Open`, and new enquiries.
 - Finance can read, insert and update payment rows but cannot delete them.
 - Riders can read and update only deliveries whose `assigned_rider_id` equals
   their authenticated user ID.
