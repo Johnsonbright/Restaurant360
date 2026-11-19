@@ -13,7 +13,10 @@ const navigation = {
     { href: "/staff/kitchen", label: "Kitchen" },
     { href: "/staff/orders", label: "Orders" },
   ],
-  admin: [{ href: "/admin/dashboard", label: "Dashboard" }],
+  admin: [
+    { href: "/admin/dashboard", label: "Dashboard" },
+    { href: "/admin/menu", label: "Menu" },
+  ],
 };
 
 export function PortalShell({

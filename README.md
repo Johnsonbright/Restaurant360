@@ -1,8 +1,9 @@
 # Restaurant360
 
 Restaurant360 is a Next.js App Router application backed by Supabase Auth and Postgres.
-This repository contains the Foundation and Milestone 1b design/auth refresh. Later
-business features remain intentionally out of scope.
+This repository contains the Restaurant360 foundation, authentication, and menu
+catalog experience. Ordering and other operational business features remain out
+of scope for the current application milestone.
 
 ## Requirements
 
@@ -136,11 +137,26 @@ are sample design content. Address, email, and phone details are placeholders.
 
 ## Photography
 
-The meal cards and gallery currently use original flat SVG placeholder artwork in
-`public/images/`. Replace those placeholders with approved restaurant photography
-before launch. Add the hero photograph at `public/images/hero.jpg`; if it is
-absent, the hero uses a soft amber radial glow on navy instead. Keep image files
-optimized for the free hosting/storage limits.
+The public menu uses real sample food photos in `public/images/menu-*.jpg`, with
+credits below each menu image. Managers and admins can choose an image asset from
+the menu editor or upload a JPEG, PNG, WebP, or AVIF photo from their device
+(maximum 5 MB). Uploaded photos use the public `menu-images` Supabase Storage
+bucket. Apply
+[`supabase/migrations/20261119140000_menu_image_storage.sql`](./supabase/migrations/20261119140000_menu_image_storage.sql)
+before using device uploads. The homepage meal cards and gallery still use
+original flat SVG artwork. Add the hero photograph at `public/images/hero.jpg`;
+if it is absent, the hero uses a soft amber radial glow on navy instead.
+
+The bundled sample menu photos are licensed as follows:
+
+| Photo | Credit and license | Source |
+|---|---|---|
+| Jollof rice | Ei'eke, CC BY-SA 4.0 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:A_Nigeria_Jollof_Rice_with_chicken.jpg) |
+| Akara and pap | Haruna Sylvester, CC BY-SA 4.0 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Akara_and_kwunu_breakfast_(beans_cake_and_pap).jpg) |
+| Puff-puff | Albertoblaq, CC BY-SA 4.0 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Puff-Puff.jpg) |
+| Pepper soup | Halima Waziri, CC BY-SA 4.0 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Catfish_pepper_soup_with_vegetables.jpg) |
+| Zobo | Halima Waziri, CC BY-SA 4.0 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Chilled_Zobo_drink.jpg) |
+| Cake | Daria Yakovleva, CC0 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Piece_of_chocolate_cake_on_a_white_plate_decorated_with_chocolate_sauce.jpg) |
 
 ## Google sign-in
 
@@ -163,5 +179,13 @@ callback exchanges the code for a session, then sends customers home, staff to
 - Staff: `/staff`, `/staff/kitchen`, `/staff/orders`
 - Admin: `/admin`, `/admin/dashboard`
 
-Menu, ordering, kitchen workflows, payments, and other later-milestone features
-are intentionally not implemented.
+The public menu at `/menu` supports category browsing and search, and the manager
+and admin menu workspace at `/admin/menu` supports catalog, category, variation,
+and add-on maintenance, menu photo selection and upload, and menu item deletion.
+Only manager and admin accounts can manage the catalog. Permanent deletion is
+blocked when an item is referenced by a recipe or past order; mark those items
+unavailable instead. The public menu visibility migration
+[`supabase/migrations/20261119130000_public_menu_visibility.sql`](./supabase/migrations/20261119130000_public_menu_visibility.sql)
+must be reviewed and applied to allow unavailable items to appear as unavailable
+in public browsing. Ordering, kitchen workflows, payments, and other operational
+features are not implemented in the application yet.
